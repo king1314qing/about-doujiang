@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | 豆浆</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 自定义光标 -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">CODEING</div>
+            <div class="nav-links">
+                <a href="#about">关于我</a>
+                <a href="#skills">学习目的</a>
+                <a href="#projects">我的工作</a>
+                <a href="#contact">联系我</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- 1. 首屏 (Hero) -->
+        <section id="hero" class="hero fade-in">
+            <h1 class="hero-title">豆 浆</h1>
+            <p class="hero-subtitle">Vibe coding初学者</p>
+            <div class="scroll-hint">Scroll to explore</div>
+        </section>
+
+        <!-- 2. 关于我 (About) -->
+        <section id="about" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-label">About Me</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text-main">
+                    <p>我是一个兴趣使然的Vibe coding初学者,我正在学习和探索Vibe coding world。希望和大家一起交流,一起成长。</p>
+                </div>
+                <div class="about-text-sub">
+                    <p>目前正在学习基础,从最基础的终端操作开始,然后学习了html,css,js等基础技能。后面的学习计划是在后面的课程中扩展到更高级的技能。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 技能 (Skills) -->
+        <section id="skills" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-label">Why learn</h2>
+            </div>
+            <div class="skills-wrap">
+                <div class="skill-tag">高中时候的梦想</div>
+                <div class="skill-tag">相信编程改变世界</div>
+                <div class="skill-tag">近几年AI技术的快速发展</div>
+                <div class="skill-tag">弥补大学没有学习计算机专业的遗憾</div>
+                <div class="skill-tag">想要不断学习来提升自己的技能</div>
+                <div class="skill-tag">为自己的工作制作一个能够帮助用户解决问题的产品</div>
+                <div class="skill-tag">需要和志同道合的朋友/团队合作,共同开发产品</div>
+                <div class="skill-tag">做一款所有人都能使用的产品</div>
+            </div>
+        </section>
+
+        <!-- 4. 项目展示 (Projects) -->
+        <section id="projects" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-label">My Job</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="F:\week2\0506\广告制作.jpg" alt="Neural Vision">
+                    </div>
+                    <div class="project-info">
+                        <h3>广告制作</h3>
+                        <p>专业广告制作加工,主营亚克力、pvc制作。产品包括文化墙、标识标牌、广告立牌等定制加工。</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="F:\week2\0506\教育培训.jpg" alt="Fluid Intelligence">
+                    </div>
+                    <div class="project-info">
+                        <h3>教育培训</h3>
+                        <p>专业考试提分,针对初三、高三学生技巧考试提分。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 联系方式 (Contact) -->
+        <section id="contact" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-label">Connect</h2>
+            </div>
+            <div class="contact-content">
+                <p class="contact-hint">期待与您探讨未来的可能性。</p>
+                <div class="btn-group">
+                    <a href="mailto:301061948@qq.com" class="btn btn-primary">Mail To Me</a>
+                    <button class="btn btn-secondary" id="wechatBtn">WeChat</button>
+                    <a href="#hero" class="btn btn-secondary">TO TOP</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 微信二维码弹窗 -->
+    <div id="wechatModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="qr-container">
+                <img src="F:\week2\0506\微信二维码.jpg" alt="WeChat QR Code">
+                <p class="qr-hint">Scan to connect on WeChat</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 豆浆. Built for the future.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
