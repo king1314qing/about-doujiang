@@ -243,11 +243,12 @@ body {
 
 .project-image {
     width: 100%;
+    max-width: 400px; /* 添加最大宽度限制，使其约为原来的一半 */
+    margin: 0 auto 20px; /* 居中显示 */
     aspect-ratio: 4/3;
     border-radius: 20px;
     overflow: hidden;
     background: #f5f5f7;
-    margin-bottom: 20px;
 }
 
 .project-image img {
@@ -414,8 +415,109 @@ body {
     transform: translateY(0);
 }
 
-/* --- 响应式优化 (Responsive Optimizations) --- */
+/* 音乐控制开关样式 - 小喇叭 */
+.music-control {
+    position: fixed;
+    top: 15px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    z-index: 1001;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s var(--ease-ios);
+}
+
+.speaker-icon {
+    position: relative;
+    width: 20px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* 喇叭主体 */
+.speaker-body {
+    width: 6px;
+    height: 8px;
+    background-color: var(--text-black);
+    position: relative;
+    transition: background-color 0.3s var(--ease-ios);
+}
+
+.speaker-body::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--text-black);
+    transition: border-color 0.3s var(--ease-ios);
+}
+
+/* 声波 */
+.speaker-waves {
+    position: absolute;
+    right: -2px;
+    width: 12px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.speaker-waves span {
+    display: block;
+    border-right: 2px solid var(--text-black);
+    border-radius: 50%;
+    transition: opacity 0.3s var(--ease-ios);
+    opacity: 0; /* 默认隐藏 */
+}
+
+.speaker-waves span:nth-child(1) {
+    width: 6px;
+    height: 8px;
+}
+
+.speaker-waves span:nth-child(2) {
+    width: 10px;
+    height: 14px;
+}
+
+/* 播放状态：声波动效 */
+.music-control.playing .speaker-waves span {
+    opacity: 1;
+    animation: wave-flash 1.2s infinite;
+}
+
+.music-control.playing .speaker-waves span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+/* 暂停状态：喇叭变灰且声波消失 */
+.music-control:not(.playing) .speaker-body {
+    background-color: var(--text-gray);
+}
+
+.music-control:not(.playing) .speaker-body::after {
+    border-right-color: var(--text-gray);
+}
+
+@keyframes wave-flash {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
 @media (max-width: 768px) {
+    .music-control {
+        right: 20px;
+    }
+}
     :root {
         --section-spacing: 80px; /* 减小移动端间距 */
     }

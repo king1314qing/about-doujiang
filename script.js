@@ -104,7 +104,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. 微信弹窗逻辑
+    // --- 音乐控制逻辑 ---
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    let isMusicPlaying = false;
+
+    const playMusic = () => {
+        bgMusic.play().then(() => {
+            musicToggle.classList.add('playing');
+            isMusicPlaying = true;
+            // 成功播放后移除所有自动播放的触发监听
+            window.removeEventListener('click', playMusic);
+            window.removeEventListener('touchstart', playMusic);
+            window.removeEventListener('scroll', playMusic);
+        }).catch(error => {
+            console.log("Autoplay blocked, waiting for interaction:", error);
+        });
+    };
+
+    // 尝试在页面加载时立即播放（通常会被浏览器拦截，但某些配置下可能成功）
+    playMusic();
+
+    // 监听用户的第一次交互以触发播放（解决浏览器拦截自动播放的问题）
+    window.addEventListener('click', playMusic, { once: true });
+    window.addEventListener('touchstart', playMusic, { once: true });
+    window.addEventListener('scroll', playMusic, { once: true });
+
+    musicToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // 防止触发 window 的播放监听
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            musicToggle.classList.remove('playing');
+            isMusicPlaying = false;
+        } else {
+            bgMusic.play().then(() => {
+                musicToggle.classList.add('playing');
+                isMusicPlaying = true;
+            });
+        }
+    });
+
+    // 为音乐开关添加光标交互
+    musicToggle.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
+    musicToggle.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
+
+    // --- 5. 微信弹窗逻辑 ---
     const wechatBtn = document.getElementById('wechatBtn');
     const wechatModal = document.getElementById('wechatModal');
     const closeModal = document.querySelector('.close-modal');
